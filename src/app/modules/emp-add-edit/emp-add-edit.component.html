@@ -1,0 +1,77 @@
+<div class="container">
+<div class="head" mat-dialog-title>
+  <h1>Employé Formulaire</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+      <div class="row">
+        <mat-form-field class="outline">
+          <mat-label>Matricule</mat-label>
+          <input matInput  placeholder="Matricule" formControlName="matricule">
+        </mat-form-field>
+        <mat-form-field class="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput  placeholder="Nom" formControlName="nom">
+        </mat-form-field>
+        <mat-form-field class="outline">
+          <mat-label>Prenom</mat-label>
+          <input matInput placeholder="Prenom" formControlName="prenom">
+        </mat-form-field>
+        <mat-form-field class="outline">
+          <mat-label>Poste</mat-label>
+          <input matInput  placeholder="Poste" formControlName="poste">
+        </mat-form-field>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Affectation</mat-label>
+            <mat-select formControlName="affectation">
+              <mat-option selected value="Siege">
+                Siege
+              </mat-option>
+              <mat-option selected value="Attijari">
+                Attijari
+              </mat-option>
+              <mat-option selected value="RMC">
+                RMC
+              </mat-option>
+              <mat-option selected value="ALBH">
+                ALBH
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div formGroupName="telephone">
+          <mat-form-field appearance="outline">
+            <mat-label>Telephone</mat-label>
+            <mat-select value="Selectionner telephone" formControlName="id">
+              <mat-option *ngFor="let telephone of telephones" [value]="telephone.id">
+                {{ telephone.numero_serie + ' : ' + telephone.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <mat-form-field class="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput  placeholder="Ex. (000) 000-0000" formControlName="number">
+        </mat-form-field>
+        <div formGroupName="abonnement">
+          <mat-form-field appearance="outline">
+            <mat-label>Abonnement</mat-label>
+            <mat-select value="Selectionner abonnement" formControlName="id">
+              <mat-option *ngFor="let abonnement of abonnements" [value]="abonnement.id">
+                {{ abonnement.nom + ' : ' + abonnement.forfeit }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div mat-dialog-actions class="action">
+        <button mat-raised-button mat-dialog-close color="warn">
+          close
+        </button>
+        <button mat-raised-button type="submit" color="primary" >Save</button>
+      </div>
+    </div>
+</form>
+
+</div>
